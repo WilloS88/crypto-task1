@@ -1,6 +1,6 @@
 # Cryptology University Project
 
-This project is part of the Cryptology course. It includes various cryptographic algorithms implemented in TypeScript.
+This project is part of the Cryptology course. It includes afinne cipher implemented in TypeScript.
 
 ## Getting Started
 
@@ -10,7 +10,7 @@ To start the TypeScript file, follow these steps:
 
 2. **Clone the Repository**: Clone the project repository to your local machine using the following command:
   ```sh
-  git clone <repository-url>
+  git clone https://github.com/WilloS88/crypto-task1.git
   ```
 
 3. **Install Dependencies**: Install the required dependencies using npm:
@@ -20,7 +20,7 @@ To start the TypeScript file, follow these steps:
 
 4. **Compile TypeScript Files**: Compile the TypeScript files to JavaScript:
   ```sh
-  npx tsc
+  npx tsc --outDir dist
   ```
 
 5. **Run the Project**: Execute the compiled JavaScript file:

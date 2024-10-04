@@ -1,13 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Afinne Cipher</title>
-  <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-  <div>Test</div>
-</body>
-<script src="dist/app.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Afinne Cipher</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="box">
+      <div class="encoded">
+        <div class="inputs">
+          <label for="text-to-encode">To be encoded</label>
+          <textarea
+            id="text-to-encode"
+            placeholder="Enter some text here..."
+          >
+        </textarea>
+  
+          <label for="encoded-text">Encoded text</label>
+          <textarea
+            id="encoded-text"
+            placeholder="Encoded text will appear here..."
+            readonly
+          ></textarea>
+        </div>
+        <div class="controls">
+          <div class="control-group">
+            <label for="coefficient-a">Coefficient a</label>
+            <input type="number" id="coefficient-a">
+            </input>
+          </div>
+          <div class="control-group">
+            <label for="coefficient-b">Coefficient b</label>
+            <input type="number" id="coefficient-b">
+              
+            </input>
+          </div>
+          <button class="encode-button">Encode</button>
+        </div>
+      </div>
+      <div class="decoded">
+        <div class="inputs">
+          <label for="text-to-encode">Decoded text</label>
+          <textarea
+            id="text-to-encode"
+            placeholder="Enter some text here..."
+          ></textarea>
+          <label for="encoded-text">Encoded text</label>
+          <textarea
+            id="encoded-text"
+            placeholder="Encoded text will appear here..."
+            readonly
+          ></textarea>
+        </div>
+        <div class="controls">
+          <div class="control-group">
+            <label for="coefficient-a">Coefficient a</label>
+            <input type="number" id="coefficient-a">
+            </input>
+          </div>
+          <div class="control-group">
+            <label for="coefficient-b">Coefficient b</label>
+            <input type="number" id="coefficient-b">
+              
+            </input>
+          </div>
+          <button class="encode-button">Encode</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="dist/app.js"></script>
 </html>

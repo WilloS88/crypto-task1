@@ -1,0 +1,92 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, #80d0c7, #0093e9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: linear-gradient(to right, #c7eafd, #b9d3ee);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  gap: 20px;
+  width: 80%;
+
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.inputs label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.inputs textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  resize: none; /* Prevent resizing for consistent design */
+  height: 80px; /* Set height for consistency */
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.control-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.control-group input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.encode-button {
+  background: #4a148c;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.encode-button:hover {
+  background: #6a1b9a;
+}
+
+.encode-button:active {
+  background: #38006b;
+}
+
+.encode-button {
+  transition: background 0.3s;
+}

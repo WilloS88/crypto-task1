@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Afinne Cipher</title>
+    <title>Affine Cipher</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <div class="header">Afinne Cipher</div>
     <div class="box">
       <div class="encoded">
         <div class="inputs">
@@ -14,9 +15,7 @@
           <textarea
             id="text-to-encode"
             placeholder="Enter some text here..."
-          >
-        </textarea>
-  
+          ></textarea>
           <label for="encoded-text">Encoded text</label>
           <textarea
             id="encoded-text"
@@ -27,48 +26,42 @@
         <div class="controls">
           <div class="control-group">
             <label for="coefficient-a">Coefficient a</label>
-            <input type="number" id="coefficient-a">
-            </input>
+            <input type="number" id="coefficient-a" />
           </div>
           <div class="control-group">
             <label for="coefficient-b">Coefficient b</label>
-            <input type="number" id="coefficient-b">
-              
-            </input>
+            <input type="number" id="coefficient-b" />
           </div>
           <button class="encode-button">Encode</button>
         </div>
       </div>
       <div class="decoded">
         <div class="inputs">
-          <label for="text-to-encode">Decoded text</label>
+          <label for="text-to-decode">To be decoded</label>
           <textarea
-            id="text-to-encode"
+            id="text-to-decode"
             placeholder="Enter some text here..."
           ></textarea>
-          <label for="encoded-text">Encoded text</label>
+          <label for="decoded-text">Decoded text</label>
           <textarea
-            id="encoded-text"
-            placeholder="Encoded text will appear here..."
+            id="decoded-text"
+            placeholder="Decoded text will appear here..."
             readonly
           ></textarea>
         </div>
         <div class="controls">
           <div class="control-group">
-            <label for="coefficient-a">Coefficient a</label>
-            <input type="number" id="coefficient-a">
-            </input>
+            <label for="decode-coefficient-a">Coefficient a</label>
+            <input type="number" id="decode-coefficient-a" />
           </div>
           <div class="control-group">
-            <label for="coefficient-b">Coefficient b</label>
-            <input type="number" id="coefficient-b">
-              
-            </input>
+            <label for="decode-coefficient-b">Coefficient b</label>
+            <input type="number" id="decode-coefficient-b" />
           </div>
-          <button class="encode-button">Encode</button>
+          <button class="decode-button">Decode</button>
         </div>
       </div>
     </div>
+    <script src="./dist/app.js"></script>
   </body>
-  <script src="dist/app.js"></script>
 </html>

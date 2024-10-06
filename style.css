@@ -1,5 +1,4 @@
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
@@ -8,49 +7,70 @@
 body {
   background: linear-gradient(to right, #80d0c7, #0093e9);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 20px;
+  overflow: auto;
+}
+
+.header {
+  text-align: center;
+  font-size: 40px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
 }
 
 .box {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   background: linear-gradient(to right, #c7eafd, #b9d3ee);
-  padding: 20px;
-  border-radius: 10px;
+  margin: 20px 0px 20px 0px;
+  padding: 30px;
+  border-radius: 5px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  gap: 20px;
-  width: 80%;
+  gap: 30px;
+  width: 100%;
+  max-width: 800px;
+  margin: 10px;
+}
 
+.encoded,
+.decoded {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
 }
 
 .inputs {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  gap: 10px;
 }
 
 .inputs label {
-  margin-bottom: 5px;
   font-weight: bold;
 }
 
 .inputs textarea {
-  margin-bottom: 15px;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
   font-size: 14px;
-  resize: none; /* Prevent resizing for consistent design */
-  height: 80px; /* Set height for consistency */
+  resize: none;
+  height: 80px;
+  width: auto;
 }
 
 .controls {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  align-items: end;
+  flex-wrap: wrap; 
+  gap: 20px;
+  align-items: flex-end;
 }
 
 .control-group {
@@ -64,29 +84,31 @@ body {
 }
 
 .control-group input {
+  align-items: center;
   padding: 5px;
   border-radius: 5px;
   border: 1px solid #ccc;
 }
 
-.encode-button {
+.encode-button, .decode-button {
   background: #4a148c;
   color: white;
-  padding: 10px 20px;
+  padding: 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  align-self: flex-start;
 }
 
-.encode-button:hover {
-  background: #6a1b9a;
+.encode-button:hover, .decode-button:hover {
+  background: #ab44ec;
 }
 
-.encode-button:active {
-  background: #38006b;
+.encode-button:active, .decode-button:active {
+  background: #7d03f0;
 }
 
-.encode-button {
+.encode-button, .decode-button {
   transition: background 0.3s;
 }

@@ -25,8 +25,10 @@ To start the TypeScript file, follow these steps:
 
 5. **Run the Project**: Execute the compiled JavaScript file:
   ```sh
-  node dist/index.js
+  node dist/app.js
   ```
+
+6. **Run Live Server**: Download Live Server Extension. Start it by clicking on "Go Live" in bottom right corner.
 
 ## Project Structure
 

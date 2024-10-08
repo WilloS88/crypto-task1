@@ -18,7 +18,6 @@ function modInverse(a: number, m: number): number | null {
   return null; // If no modular inverse exists
 }
 
-const alphabetSize = 26;
 const spacePlaceholder = "XMEZERAX";
 
 // Utility function to clean and prepare input text
@@ -49,7 +48,7 @@ function formatOutput(text: string): string {
 
 // Encoding function
 function affineEncrypt(plainText: string, a: number, b: number): string {
-  if (gcd(a, alphabetSize) !== 1) {
+  if (gcd(a, 26) !== 1) {
     throw new Error("Coefficient 'a' must be coprime with the alphabet size (26)");
   }
 
@@ -63,7 +62,7 @@ function affineEncrypt(plainText: string, a: number, b: number): string {
         return String.fromCharCode(((char.charCodeAt(0) - "0".charCodeAt(0) + b) % 10) + "0".charCodeAt(0));
       } else if (char >= "A" && char <= "Z") {
         const x = char.charCodeAt(0) - "A".charCodeAt(0);
-        const encryptedChar = (a * x + b) % alphabetSize;
+        const encryptedChar = (a * x + b) % 26;
         return String.fromCharCode(encryptedChar + "A".charCodeAt(0));
       } else {
         return char; // Return unchanged for placeholders or numbers
@@ -76,7 +75,7 @@ function affineEncrypt(plainText: string, a: number, b: number): string {
 
 // Decoding function
 function affineDecrypt(cipherText: string, a: number, b: number): string {
-  const a_inv = modInverse(a, alphabetSize);
+  const a_inv = modInverse(a, 26);
   if (a_inv === null) {
     throw new Error("Coefficient 'a' has no modular inverse, hence decryption is not possible");
   }
@@ -91,7 +90,7 @@ function affineDecrypt(cipherText: string, a: number, b: number): string {
         return String.fromCharCode(((char.charCodeAt(0) - "0".charCodeAt(0) - b + 10) % 10) + "0".charCodeAt(0));
       } else if (char >= "A" && char <= "Z") {
         const y = char.charCodeAt(0) - "A".charCodeAt(0);
-        const decryptedChar = (a_inv * (y - b + alphabetSize)) % alphabetSize;
+        const decryptedChar = (a_inv * (y - b + 26)) % 26;
         return String.fromCharCode(decryptedChar + "A".charCodeAt(0));
       } else {
         return char; // Return unchanged for placeholders or numbers

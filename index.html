@@ -9,56 +9,56 @@
   <body>
     <div class="header">Afinne Cipher</div>
     <div class="box">
-      <div class="encoded">
+      <div class="encrypted">
         <div class="inputs">
-          <label for="text-to-encode">To be encoded</label>
+          <label for="text-to-encrypt">To be Encrypted</label>
           <textarea
-            id="text-to-encode"
+            id="text-to-encrypt"
             placeholder="Enter some text here..."
           ></textarea>
-          <label for="encoded-text">Encoded text</label>
+          <label for="encrypted-text">Encrypted text</label>
           <textarea
-            id="encoded-text"
-            placeholder="Encoded text will appear here..."
+            id="encrypted-text"
+            placeholder="Encrypted text will appear here..."
             readonly
           ></textarea>
         </div>
         <div class="controls">
           <div class="control-group">
-            <label for="coefficient-a">Coefficient a</label>
-            <input type="number" id="coefficient-a" />
+            <label for="encrypt-coefficient-a">Coefficient a</label>
+            <input type="number" id="encrypt-coefficient-a" />
           </div>
           <div class="control-group">
-            <label for="coefficient-b">Coefficient b</label>
-            <input type="number" id="coefficient-b" />
+            <label for="encrypt-coefficient-b">Coefficient b</label>
+            <input type="number" id="encrypt-coefficient-b" />
           </div>
-          <button class="encode-button">Encode</button>
+          <button class="encrypt-button">Encrypt</button>
         </div>
       </div>
-      <div class="decoded">
+      <div class="decrypted">
         <div class="inputs">
-          <label for="text-to-decode">To be decoded</label>
+          <label for="text-to-decrypt">To be Decrypted</label>
           <textarea
-            id="text-to-decode"
+            id="text-to-decrypt"
             placeholder="Enter some text here..."
           ></textarea>
-          <label for="decoded-text">Decoded text</label>
+          <label for="decrypted-text">Decrypted text</label>
           <textarea
-            id="decoded-text"
-            placeholder="Decoded text will appear here..."
+            id="decrypted-text"
+            placeholder="Decrypted text will appear here..."
             readonly
           ></textarea>
         </div>
         <div class="controls">
           <div class="control-group">
-            <label for="decode-coefficient-a">Coefficient a</label>
-            <input type="number" id="decode-coefficient-a" />
+            <label for="decrypt-coefficient-a">Coefficient a</label>
+            <input type="number" id="decrypt-coefficient-a" />
           </div>
           <div class="control-group">
-            <label for="decode-coefficient-b">Coefficient b</label>
-            <input type="number" id="decode-coefficient-b" />
+            <label for="decrypt-coefficient-b">Coefficient b</label>
+            <input type="number" id="decrypt-coefficient-b" />
           </div>
-          <button class="decode-button">Decode</button>
+          <button class="decrypt-button">Decrypt</button>
         </div>
       </div>
     </div>

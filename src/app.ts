@@ -27,7 +27,7 @@ function prepareInput(text: string): string {
     .replace(/[ÁÀÂÄ]/g, "A")
     .replace(/[Č]/g, "C")
     .replace(/[Ď]/g, "D")
-    .replace(/[ÉÈÊË]/g, "E")
+    .replace(/[ÉÈÊËĚ]/g, "E")
     .replace(/[ÍÌÎÏ]/g, "I")
     .replace(/[Ň]/g, "N")
     .replace(/[ÓÒÔÖ]/g, "O")
@@ -46,7 +46,7 @@ function formatOutput(text: string): string {
   return text.replace(/.{1,5}/g, "$& ").trim();
 }
 
-// Encoding function
+// Encrypting function
 function affineEncrypt(plainText: string, a: number, b: number): string {
   if (gcd(a, 26) !== 1) {
     throw new Error("Coefficient 'a' must be coprime with the alphabet size (26)");
@@ -73,7 +73,7 @@ function affineEncrypt(plainText: string, a: number, b: number): string {
   return formatOutput(encryptedText);
 }
 
-// Decoding function
+// Decrypting function
 function affineDecrypt(cipherText: string, a: number, b: number): string {
   const a_inv = modInverse(a, 26);
   if (a_inv === null) {
@@ -102,15 +102,15 @@ function affineDecrypt(cipherText: string, a: number, b: number): string {
   return decryptedText;
 }
 
-// Event Listener for encoding and displaying in UI
-document.querySelector(".encode-button")?.addEventListener("click", () => {
-  const textToEncode = (document.getElementById("text-to-encode") as HTMLTextAreaElement).value;
-  const a = parseInt((document.getElementById("coefficient-a") as HTMLInputElement).value);
-  const b = parseInt((document.getElementById("coefficient-b") as HTMLInputElement).value);
+// Event Listener for ENCRYPTING and displaying in UI
+document.querySelector(".encrypt-button")?.addEventListener("click", () => {
+  const textToEncrypt = (document.getElementById("text-to-encrypt") as HTMLTextAreaElement).value;
+  const a = parseInt((document.getElementById("encrypt-coefficient-a") as HTMLInputElement).value);
+  const b = parseInt((document.getElementById("encrypt-coefficient-b") as HTMLInputElement).value);
 
   try {
-    const encodedText = affineEncrypt(textToEncode, a, b);
-    (document.getElementById("encoded-text") as HTMLTextAreaElement).value = encodedText;
+    const encryptedText = affineEncrypt(textToEncrypt, a, b);
+    (document.getElementById("encrypted-text") as HTMLTextAreaElement).value = encryptedText;
   } catch (error) {
     if (error instanceof Error) {
       alert(error.message);
@@ -120,15 +120,15 @@ document.querySelector(".encode-button")?.addEventListener("click", () => {
   }
 });
 
-// Event Listener for decoding and displaying in UI
-document.querySelector(".decode-button")?.addEventListener("click", () => {
-  const textToDecode = (document.getElementById("text-to-decode") as HTMLTextAreaElement).value;
-  const a = parseInt((document.getElementById("decode-coefficient-a") as HTMLInputElement).value);
-  const b = parseInt((document.getElementById("decode-coefficient-b") as HTMLInputElement).value);
+// Event Listener for DECRYPTING and displaying in UI
+document.querySelector(".decrypt-button")?.addEventListener("click", () => {
+  const textToDecrypt = (document.getElementById("text-to-decrypt") as HTMLTextAreaElement).value;
+  const a = parseInt((document.getElementById("decrypt-coefficient-a") as HTMLInputElement).value);
+  const b = parseInt((document.getElementById("decrypt-coefficient-b") as HTMLInputElement).value);
 
   try {
-    const decodedText = affineDecrypt(textToDecode, a, b);
-    (document.getElementById("decoded-text") as HTMLTextAreaElement).value = decodedText;
+    const decryptedText = affineDecrypt(textToDecrypt, a, b);
+    (document.getElementById("decrypted-text") as HTMLTextAreaElement).value = decryptedText;
   } catch (error) {
     if (error instanceof Error) {
       alert(error.message);

@@ -37,8 +37,8 @@ body {
   margin: 10px;
 }
 
-.encoded,
-.decoded {
+.encrypted,
+.decrypted {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -90,7 +90,7 @@ body {
   border: 1px solid #ccc;
 }
 
-.encode-button, .decode-button {
+.encrypt-button, .decrypt-button {
   background: #4a148c;
   color: white;
   padding: 20px;
@@ -101,14 +101,14 @@ body {
   align-self: flex-start;
 }
 
-.encode-button:hover, .decode-button:hover {
+.encrypt-button:hover, .decrypt-button:hover {
   background: #ab44ec;
 }
 
-.encode-button:active, .decode-button:active {
+.encrypt-button:active, .decrypt-button:active {
   background: #7d03f0;
 }
 
-.encode-button, .decode-button {
+.encrypt-button, .decrypt-button {
   transition: background 0.3s;
 }

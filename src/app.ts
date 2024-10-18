@@ -19,6 +19,18 @@ function modInverse(a: number, m: number): number | null {
 }
 
 const spacePlaceholder = "XMEZERAX";
+const numbersPlaceholder = [
+  "XZEROX",
+  "XONEX",
+  "XTWOX",
+  "XTHREEX",
+  "XFOURX",
+  "XFIVEX",
+  "XSIXX",
+  "XSEVENX",
+  "XEIGHTX",
+  "XNINEX",
+];
 
 // Utility function to clean and prepare input text
 function prepareInput(text: string): string {
@@ -38,7 +50,8 @@ function prepareInput(text: string): string {
     .replace(/[Ý]/g, "Y")
     .replace(/[Ž]/g, "Z")
     .replace(/[^A-Z0-9 ]/g, "") // Remove all special characters except numbers and spaces
-    .replace(/ /g, spacePlaceholder); // Replace spaces with placeholder
+    .replace(/ /g, spacePlaceholder) // Replace spaces with placeholder
+    .replace(/[0-9]/g, (digit: string) => numbersPlaceholder[parseInt(digit)]); // Replace numbers with placeholder
 }
 
 // Function to split text into chunks of five characters
@@ -49,7 +62,9 @@ function formatOutput(text: string): string {
 // Encrypting function
 function affineEncrypt(plainText: string, a: number, b: number): string {
   if (gcd(a, 26) !== 1) {
-    throw new Error("Coefficient 'a' must be coprime with the alphabet size (26)");
+    throw new Error(
+      "Coefficient 'a' must be coprime with the alphabet size (26)"
+    );
   }
 
   const filteredText = prepareInput(plainText);
@@ -58,8 +73,8 @@ function affineEncrypt(plainText: string, a: number, b: number): string {
     .split("")
     .map((char) => {
       if (char >= "0" && char <= "9") {
-        // Encrypt numbers 0-9 by shifting them within the range of 10
-        return String.fromCharCode(((char.charCodeAt(0) - "0".charCodeAt(0) + b) % 10) + "0".charCodeAt(0));
+        const numberIndex = char.charCodeAt(0) - "0".charCodeAt(0);
+        return numbersPlaceholder[numberIndex];
       } else if (char >= "A" && char <= "Z") {
         const x = char.charCodeAt(0) - "A".charCodeAt(0);
         const encryptedChar = (a * x + b) % 26;
@@ -77,18 +92,17 @@ function affineEncrypt(plainText: string, a: number, b: number): string {
 function affineDecrypt(cipherText: string, a: number, b: number): string {
   const a_inv = modInverse(a, 26);
   if (a_inv === null) {
-    throw new Error("Coefficient 'a' has no modular inverse, hence decryption is not possible");
+    throw new Error(
+      "Coefficient 'a' has no modular inverse, hence decryption is not possible"
+    );
   }
 
   const filteredText = cipherText.replace(/ /g, ""); // Remove spaces before decryption
 
-  const decryptedText = filteredText
+  let decryptedText = filteredText
     .split("")
     .map((char) => {
-      if (char >= "0" && char <= "9") {
-        // Decrypt numbers 0-9 by shifting them within the range of 10
-        return String.fromCharCode(((char.charCodeAt(0) - "0".charCodeAt(0) - b + 10) % 10) + "0".charCodeAt(0));
-      } else if (char >= "A" && char <= "Z") {
+      if (char >= "A" && char <= "Z") {
         const y = char.charCodeAt(0) - "A".charCodeAt(0);
         const decryptedChar = (a_inv * (y - b + 26)) % 26;
         return String.fromCharCode(decryptedChar + "A".charCodeAt(0));
@@ -97,20 +111,38 @@ function affineDecrypt(cipherText: string, a: number, b: number): string {
       }
     })
     .join("")
-    .replace(new RegExp(spacePlaceholder, "g"), " "); // Replace placeholder back with spaces
+    .replace(new RegExp(spacePlaceholder, "g"), " ");
+  // Replace placeholder back with spaces
+
+  decryptedText = decryptedText.replace(
+    new RegExp(numbersPlaceholder.join("|"), "g"),
+    (match) => {
+      return numbersPlaceholder.indexOf(match).toString();
+    }
+  );
 
   return decryptedText;
 }
 
 // Event Listener for ENCRYPTING and displaying in UI
 document.querySelector(".encrypt-button")?.addEventListener("click", () => {
-  const textToEncrypt = (document.getElementById("text-to-encrypt") as HTMLTextAreaElement).value;
-  const a = parseInt((document.getElementById("encrypt-coefficient-a") as HTMLInputElement).value);
-  const b = parseInt((document.getElementById("encrypt-coefficient-b") as HTMLInputElement).value);
+  const textToEncrypt = (
+    document.getElementById("text-to-encrypt") as HTMLTextAreaElement
+  ).value;
+  const a = parseInt(
+    (document.getElementById("encrypt-coefficient-a") as HTMLInputElement).value
+  );
+  const b = parseInt(
+    (document.getElementById("encrypt-coefficient-b") as HTMLInputElement).value
+  );
 
   try {
+    const filteredText = prepareInput(textToEncrypt);
+    (document.getElementById("filtered-text") as HTMLTextAreaElement).value =
+      filteredText;
     const encryptedText = affineEncrypt(textToEncrypt, a, b);
-    (document.getElementById("encrypted-text") as HTMLTextAreaElement).value = encryptedText;
+    (document.getElementById("encrypted-text") as HTMLTextAreaElement).value =
+      encryptedText;
   } catch (error) {
     if (error instanceof Error) {
       alert(error.message);
@@ -122,13 +154,20 @@ document.querySelector(".encrypt-button")?.addEventListener("click", () => {
 
 // Event Listener for DECRYPTING and displaying in UI
 document.querySelector(".decrypt-button")?.addEventListener("click", () => {
-  const textToDecrypt = (document.getElementById("text-to-decrypt") as HTMLTextAreaElement).value;
-  const a = parseInt((document.getElementById("decrypt-coefficient-a") as HTMLInputElement).value);
-  const b = parseInt((document.getElementById("decrypt-coefficient-b") as HTMLInputElement).value);
+  const textToDecrypt = (
+    document.getElementById("text-to-decrypt") as HTMLTextAreaElement
+  ).value;
+  const a = parseInt(
+    (document.getElementById("decrypt-coefficient-a") as HTMLInputElement).value
+  );
+  const b = parseInt(
+    (document.getElementById("decrypt-coefficient-b") as HTMLInputElement).value
+  );
 
   try {
     const decryptedText = affineDecrypt(textToDecrypt, a, b);
-    (document.getElementById("decrypted-text") as HTMLTextAreaElement).value = decryptedText;
+    (document.getElementById("decrypted-text") as HTMLTextAreaElement).value =
+      decryptedText;
   } catch (error) {
     if (error instanceof Error) {
       alert(error.message);

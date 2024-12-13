@@ -162,3 +162,4 @@ function affineDecrypt(cipherText, a, b) {
         }
     }
 });
+console.log("kokot" + "0".charCodeAt(0));

@@ -7,7 +7,7 @@ function gcd(a: number, b: number): number {
   }
   return a;
 }
-
+  
 // Function to find modular multiplicative inverse
 function modInverse(a: number, m: number): number | null {
   for (let i = 1; i < m; i++) {
@@ -176,3 +176,16 @@ document.querySelector(".decrypt-button")?.addEventListener("click", () => {
     }
   }
 });
+
+document.querySelector(".example-button")?.addEventListener("click", () => {
+  try {
+    (document.getElementById("text-to-encrypt") as HTMLTextAreaElement).value = "Útok na Čeňka v 19:00 &#*^$#@OK";
+  } catch (error) {
+    if (error instanceof Error) {
+      alert(error.message);
+    } else {
+      alert("An unknown error occurred");
+    }
+  }
+  
+})

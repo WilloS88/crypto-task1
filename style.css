@@ -90,7 +90,7 @@ body {
   border: 1px solid #ccc;
 }
 
-.encrypt-button, .decrypt-button {
+.encrypt-button, .decrypt-button, .example-button {
   background: #4a148c;
   color: white;
   padding: 20px;
@@ -98,17 +98,17 @@ body {
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  align-self: flex-start;
+  align-self: flex-center;
 }
 
-.encrypt-button:hover, .decrypt-button:hover {
+.encrypt-button:hover, .decrypt-button:hover, .example-button:hover {
   background: #ab44ec;
 }
 
-.encrypt-button:active, .decrypt-button:active {
+.encrypt-button:active, .decrypt-button:active, .example-button:active {
   background: #7d03f0;
 }
 
-.encrypt-button, .decrypt-button {
+.encrypt-button, .decrypt-button, .example-button {
   transition: background 0.3s;
 }

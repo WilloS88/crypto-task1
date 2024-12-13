@@ -1,5 +1,5 @@
 "use strict";
-var _a, _b;
+var _a, _b, _c;
 // Function to find greatest common divisor
 function gcd(a, b) {
     while (b !== 0) {
@@ -139,6 +139,19 @@ function affineDecrypt(cipherText, a, b) {
         const decryptedText = affineDecrypt(textToDecrypt, a, b);
         document.getElementById("decrypted-text").value =
             decryptedText;
+    }
+    catch (error) {
+        if (error instanceof Error) {
+            alert(error.message);
+        }
+        else {
+            alert("An unknown error occurred");
+        }
+    }
+});
+(_c = document.querySelector(".example-button")) === null || _c === void 0 ? void 0 : _c.addEventListener("click", () => {
+    try {
+        document.getElementById("text-to-encrypt").value = "Útok na Čeňka v 19:00 &#*^$#@OK";
     }
     catch (error) {
         if (error instanceof Error) {

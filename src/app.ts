@@ -189,6 +189,3 @@ document.querySelector(".example-button")?.addEventListener("click", () => {
   }
   
 })
-
-
-console.log("kokot" + "0".charCodeAt(0));
